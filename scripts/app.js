@@ -30,6 +30,8 @@ var blackButton = document.getElementById('blackButton');
 // store buttons in an array
 var buttons = [greyButton, redButton, yellowButton, greenButton,
                 blueButton, purpleButton, orangeButton, blackButton];
+				
+var undoButton = document.getElementById('undoButton');
 
 // get the main board and key square elements stored in a 2d array
 var mainBoardElements = [
@@ -197,6 +199,13 @@ function setSquareColor() {
 	}
 }
 
+function undoPrevious() {
+	mainBoardElements[currentRow][currentCol - 1].style.backgroundColor = 'white';
+	currentCol--;
+}
+
+// adding listeners
+undoButton.addEventListener('click', undoPrevious);
 for(var i = 0; i < 8; ++i) {
     buttons[i].addEventListener('click', setSquareColor);
 }

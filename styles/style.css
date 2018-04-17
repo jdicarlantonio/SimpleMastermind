@@ -55,6 +55,11 @@ Button {
     height: 30px;
 }
 
+#undoButton {
+	background-color: white;
+	text-align: center;
+}
+
 #greyButton {
     background-color: gray;
 }
