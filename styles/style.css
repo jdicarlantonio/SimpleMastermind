@@ -1,0 +1,87 @@
+html {
+    font-family: sans-serif;
+}
+
+body {
+    width: 50%;
+    max-width: 800px;
+    min-width: 480px;
+/*    margin: 0 auto;  */
+}
+
+h1 {
+    margin-left: 60px;
+}
+
+table, td, Button {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+.key {
+    height: 30px;
+    width: 100px;
+    float: right;
+    margin-top: 23px;
+    margin-right: 75px;
+}
+
+.keysquare {
+    height: 30px;
+    width: 50px;
+}
+
+.mainboard {
+    width: 300px;
+    height: 120px;
+    margin-top: 45px;
+    margin-left: 20px;
+}
+
+.square {
+    width: 75px;
+    height: 30px;
+}
+
+tr {
+    width: 300px;
+    height: 30px;
+}
+
+Button {
+    margin-left: 5px; 
+    margin-top: 40px;
+    width: 75px;
+    height: 30px;
+}
+
+#greyButton {
+    background-color: gray;
+}
+
+#redButton {
+    background-color: red;
+}
+
+#yellowButton {
+    background-color: yellow;
+}
+
+#greenButton {
+    background-color: green;
+}
+
+#blueButton {
+    background-color: blue;
+}
+
+#purpleButton {
+    background-color: purple;
+}
+#orangeButton {
+    background-color: orange;
+}
+#blackButton {
+    background-color: black;
+}
+

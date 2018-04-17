@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8"> 
+        <title>Mastermind</title>
+
+        <link href="styles/style.css" type="text/css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <h1>Mastermind</h1>
+        
+        <!-- draw key which shows user if any colors are correct -->
+        <table class="key">
+            <tr>
+                <td class="keysquare" id="keysquare00"></td>
+                <td class="keysquare" id="keysquare01"></td>
+                <td class="keysquare" id="keysquare02"></td>
+                <td class="keysquare" id="keysquare03"></td>
+            </tr>
+            <tr>
+                <td class="keysquare" id="keysquare10"></td>
+                <td class="keysquare" id="keysquare11"></td>
+                <td class="keysquare" id="keysquare12"></td>
+                <td class="keysquare" id="keysquare13"></td>
+            </tr>
+            <tr>
+                <td class="keysquare" id="keysquare20"></td>
+                <td class="keysquare" id="keysquare21"></td>
+                <td class="keysquare" id="keysquare22"></td>
+                <td class="keysquare" id="keysquare23"></td>
+            </tr>
+            <tr>
+                <td class="keysquare" id="keysquare30"></td>
+                <td class="keysquare" id="keysquare31"></td>
+                <td class="keysquare" id="keysquare32"></td>
+                <td class="keysquare" id="keysquare33"></td>
+            </tr>
+            <tr>
+                <td class="keysquare" id="keysquare40"></td>
+                <td class="keysquare" id="keysquare41"></td>
+                <td class="keysquare" id="keysquare42"></td>
+                <td class="keysquare" id="keysquare43"></td>
+            </tr>
+            <tr>
+                <td class="keysquare" id="keysquare50"></td>
+                <td class="keysquare" id="keysquare51"></td>
+                <td class="keysquare" id="keysquare52"></td>
+                <td class="keysquare" id="keysquare53"></td>
+            </tr>
+            <tr>
+                <td class="keysquare" id="keysquare60"></td>
+                <td class="keysquare" id="keysquare61"></td>
+                <td class="keysquare" id="keysquare62"></td>
+                <td class="keysquare" id="keysquare63"></td>
+            </tr>
+            <tr>
+                <td class="keysquare" id="keysquare70"></td>
+                <td class="keysquare" id="keysquare71"></td>
+                <td class="keysquare" id="keysquare72"></td>
+                <td class="keysquare" id="keysquare73"></td>
+            </tr>
+            <tr>
+                <td class="keysquare" id="keysquare80"></td>
+                <td class="keysquare" id="keysquare81"></td>
+                <td class="keysquare" id="keysquare82"></td>
+                <td class="keysquare" id="keysquare83"></td>
+            </tr>
+            <tr>
+                <td class="keysquare" id="keysquare90"></td>
+                <td class="keysquare" id="keysquare91"></td>
+                <td class="keysquare" id="keysquare92"></td>
+                <td class="keysquare" id="keysquare93"></td>
+            </tr>
+        </table>
+        
+        <!-- draw main board  --> 
+        <table class="mainboard">
+            <tr id="row0">
+                <td class="square" id="square00"></td>
+                <td class="square" id="square01"></td>
+                <td class="square" id="square02"></td>
+                <td class="square" id="square03"></td>
+            </tr>
+            <tr id="row1">
+                <td class="square" id="square10"></td>
+                <td class="square" id="square11"></td>
+                <td class="square" id="square12"></td>
+                <td class="square" id="square13"></td>
+            </tr>
+            <tr id="row2">
+                <td class="square" id="square20"></td>
+                <td class="square" id="square21"></td>
+                <td class="square" id="square22"></td>
+                <td class="square" id="square23"></td>
+            </tr>
+            <tr id="row3">
+                <td class="square" id="square30"></td>
+                <td class="square" id="square31"></td>
+                <td class="square" id="square32"></td>
+                <td class="square" id="square33"></td>
+            </tr>
+            <tr id="row4">
+                <td class="square" id="square40"></td>
+                <td class="square" id="square41"></td>
+                <td class="square" id="square42"></td>
+                <td class="square" id="square43"></td>
+            </tr>
+            <tr id="row5">
+                <td class="square" id="square50"></td>
+                <td class="square" id="square51"></td>
+                <td class="square" id="square52"></td>
+                <td class="square" id="square53"></td>
+            </tr>
+            <tr id="row6">
+                <td class="square" id="square60"></td>
+                <td class="square" id="square61"></td>
+                <td class="square" id="square62"></td>
+                <td class="square" id="square63"></td>
+            </tr>
+            <tr id="row7">
+                <td class="square" id="square70"></td>
+                <td class="square" id="square71"></td>
+                <td class="square" id="square72"></td>
+                <td class="square" id="square73"></td>
+            </tr>
+            <tr id="row8">
+                <td class="square" id="square80"></td>
+                <td class="square" id="square81"></td>
+                <td class="square" id="square82"></td>
+                <td class="square" id="square83"></td>
+            </tr>
+            <tr id="row9">
+                <td class="square" id="square90"></td>
+                <td class="square" id="square91"></td>
+                <td class="square" id="square92"></td>
+                <td class="square" id="square93"></td>
+            </tr>
+        </table>
+
+        <!-- draw color selector -->
+        <Button id="greyButton"></Button>
+        <Button id="redButton"></Button>
+        <Button id="yellowButton"></Button>
+        <Button id="greenButton"></Button>
+        <br>
+        <Button id="blueButton"></Button>
+        <Button id="purpleButton"></Button>
+        <Button id="orangeButton"></Button>
+        <Button id="blackButton"></Button>
+
+        <script src="scripts/app.js"></script>
+    </body>
+
+</html>
