@@ -41,6 +41,7 @@ var keySquareElements = [
     [], [], [], [], []
 ];
 
+var patternMatchFound = false;
 var gameOver = false;
 
 // for debugging purposes
@@ -56,9 +57,39 @@ for(var row = 0; row < numRows; ++row) {
     }
 }
 
+// reset the game
+function resetGame() {
+	if(patternMatchFound) {
+		alert('Pattern matched! Game reseting...');
+		
+	} else {
+		alert('Pattern not found! Game reseting...');
+	}
+	
+	// reset both patterns
+	userPattern = [];
+	for(var i = 0; i < 4; ++i) {
+			var randomNum = Math.floor(Math.random() * 7);
+		
+			randomPattern[i] = colors[randomNum];
+	}
+	
+	// clear the board
+	for(var row = 0; row < numRows; ++row) {
+		for(var col = 0; col < numCols; ++col) {
+			mainBoardElements[row][col].style.backgroundColor = 'white';
+			keySquareElements[row][col].style.backgroundColor = 'white';
+		}
+	}
+	
+	gameOver = false;
+
+	alert(randomPattern[0] + ' ' + randomPattern[1] + ' ' + randomPattern[2] + ' '+ randomPattern[3]);
+}
+
 // check users/AI made pattern
 function patternMatch(pattern) {
-    for(var i = 0; i < userPattern.length; ++i) {
+    for(var i = 0; i < numCols; ++i) {
         if(pattern[i] !== randomPattern[i]) {
             return false;
         }
@@ -90,7 +121,7 @@ function updateKey(pattern, row) {
         }
     }
 
-    alert('correct position: ' + correctPosition + ' wrong position: ' + correctColor);
+ //   alert('correct position: ' + correctPosition + ' wrong position: ' + correctColor);
    
     // color in the key
     for(var i = 0; i < correctPosition + correctColor; ++i) {
@@ -145,21 +176,27 @@ function setSquareColor() {
     ++currentCol;
     if(currentCol > 3) {
         if(patternMatch(userPattern)) {
-            alert('Pattern match');
-            gameOver = true;
+			patternMatchFound = true;
+			gameOver = true;
 
         } else {
-            updateKey(userPattern, currentRow)
+            updateKey(userPattern, currentRow);
         }
 
         currentCol = 0;
         ++currentRow;
         if(currentRow > 9) {
-            gameOver = true 
+            gameOver = true;
          }
     }
+	
+	if(gameOver) {
+		currentRow = 0;
+		currentCol = 0;
+		resetGame();
+	}
 }
 
 for(var i = 0; i < 8; ++i) {
-    buttons[i].addEventListener('click', setSquareColor)
+    buttons[i].addEventListener('click', setSquareColor);
 }
