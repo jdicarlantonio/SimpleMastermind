@@ -2,15 +2,17 @@
 <html>
 
     <head>
-        <meta charset="utf-8"> 
+        <meta charset="utf-8">
         <title>Mastermind</title>
 
         <link href="styles/style.css" type="text/css" rel="stylesheet">
     </head>
-    
+
     <body>
+      <header>
         <h1>Mastermind</h1>
-        
+      </header>
+        <div class="container">
         <!-- draw key which shows user if any colors are correct -->
         <table class="key">
             <tr>
@@ -74,8 +76,8 @@
                 <td class="keysquare" id="keysquare93"></td>
             </tr>
         </table>
-        
-        <!-- draw main board  --> 
+
+        <!-- draw main board  -->
         <table class="mainboard">
             <tr id="row0">
                 <td class="square" id="square00"></td>
@@ -150,6 +152,7 @@
         <Button id="purpleButton"></Button>
         <Button id="orangeButton"></Button>
         <Button id="blackButton"></Button>
+      </div>
 
         <script src="scripts/app.js"></script>
     </body>

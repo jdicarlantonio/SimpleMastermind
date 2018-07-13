@@ -1,19 +1,30 @@
 html {
     font-family: sans-serif;
+
 }
 
 body {
     width: 50%;
-    max-width: 800px;
-    min-width: 480px;
-/*    margin: 0 auto;  */
+    margin: 0 auto;
+    /*max-width: 800px;
+    min-width: 480px;*/
+
+}
+
+header {
+  /*border: 2px solid #F00;*/
+  margin: 0 auto;
+
 }
 
 h1 {
-    margin-left: 60px;
+    text-align: center;
 }
 
-table, td, Button {
+
+table,
+td,
+Button {
     border: 2px solid black;
     border-collapse: collapse;
 }
@@ -22,7 +33,7 @@ table, td, Button {
     height: 30px;
     width: 100px;
     float: right;
-    margin-top: 23px;
+    /*margin-top: 23px;*/
     margin-right: 50px;
 }
 
@@ -43,21 +54,25 @@ table, td, Button {
     height: 30px;
 }
 
+.container {
+  margin: 0 auto;
+}
+
 tr {
     width: 300px;
     height: 30px;
 }
 
 Button {
-    margin-left: 5px; 
+    margin-left: 5px;
     margin-top: 40px;
     width: 75px;
     height: 30px;
 }
 
 #undoButton {
-	background-color: white;
-	text-align: center;
+    background-color: white;
+    text-align: center;
 }
 
 #greyButton {
@@ -83,10 +98,11 @@ Button {
 #purpleButton {
     background-color: purple;
 }
+
 #orangeButton {
     background-color: orange;
 }
+
 #blackButton {
     background-color: black;
 }
-
