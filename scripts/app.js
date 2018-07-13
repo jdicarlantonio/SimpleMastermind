@@ -1,6 +1,12 @@
 var numRows = 10;
 var numCols = 4;
 
+// variable to count the turns a user makes
+var totalTurns = 0;
+
+// keep track of ow many seconds have gone by
+var timeElapsedInSeconds = 0;
+
 // array to store the users current pattern, gets checked and resets every row
 var userPattern = [ ];
 
@@ -46,9 +52,6 @@ var keySquareElements = [
 var patternMatchFound = false;
 var gameOver = false;
 
-// for debugging purposes
-alert(randomPattern[0] + ' ' + randomPattern[1] + ' ' + randomPattern[2] + ' '+ randomPattern[3]);
-
 for(var row = 0; row < numRows; ++row) {
     for(var col = 0; col < numCols; ++col) {
         mainBoardElements[row][col] = 
@@ -59,15 +62,56 @@ for(var row = 0; row < numRows; ++row) {
     }
 }
 
+// update the timer
+function updateTimer() {
+    ++timeElapsedInSeconds;
+
+    var clock = document.getElementById('clock'); 
+    
+    if(timeElapsedInSeconds < 10) {
+        clock.innerHTML = "00:0" + timeElapsedInSeconds;
+    }
+
+    if(timeElapsedInSeconds >= 10 && timeElapsedInSeconds < 60) {
+        clock.innerHTML = "00:" + timeElapsedInSeconds;
+    }
+
+    if(timeElapsedInSeconds >= 60) {
+        // how many minutes have passed
+        var minute = Math.floor(timeElapsedInSeconds / 60);
+        var second = timeElapsedInSeconds - (minute * 60);
+        
+        if(minute < 10 && second < 10) {
+            clock.innerHTML = "0" + minute + ":" + "0" + second;
+        }
+        else if(minute < 10 && second >= 10) {
+            clock.innerHTML = "0" + minute + ":" + second;
+        }
+        else {
+            clock.innerHTML = minute + ":" + second;
+        }
+    }
+}
+
+// timer
+var timer = setInterval(updateTimer, 1000);
+
 // reset the game
 function resetGame() {
+        ++totalTurns;
 	if(patternMatchFound) {
-		alert('Pattern matched! Game reseting...');
+                // total score is time elapsed minus extra turns 
+                var score = timeElapsedInSeconds - (totalTurns + 10);
+                alert('Pattern Match!\nFound in ' + totalTurns + 
+                        ' turns\nTime Elapsed: ' + timeElapsedInSeconds +
+                        ' seconds\nTotal Score: ' + score);
+
+                alert('Game Reset');
 		
 	} else {
 		alert('Pattern not found! Game reseting...');
 	}
-	
+
 	// reset both patterns
 	userPattern = [];
 	for(var i = 0; i < 4; ++i) {
@@ -83,13 +127,12 @@ function resetGame() {
 			keySquareElements[row][col].style.backgroundColor = 'white';
 		}
 	}
-	
-	gameOver = false;
 
-	alert(randomPattern[0] + ' ' + randomPattern[1] + ' ' + randomPattern[2] + ' '+ randomPattern[3]);
+        totalTurns = 0; 
+	gameOver = false;
+        timeElapsedInSeconds = 0;
 }
 
-// check users/AI made pattern
 function patternMatch(pattern) {
     for(var i = 0; i < numCols; ++i) {
         if(pattern[i] !== randomPattern[i]) {
@@ -106,19 +149,25 @@ function updateKey(pattern, row) {
     var correctColor = 0;
 
     // keep track of what has been checked
-    var hasBeenChecked = [false, false, false, false] 
+    var solnChecked = [false, false, false, false] 
+    var userChecked = [false, false, false, false] 
+
+    // check elements in the correct position
     for(var i = 0; i < numCols; ++i) {
         if(pattern[i] === randomPattern[i]) {
             ++correctPosition;
-            hasBeenChecked[i] = true;
+            solnChecked[i] = true;
+            userChecked[i] = true;
         } 
     }
    
     // check for elements not in same position 
     for(var i = 0; i < numCols; ++i) {
         for(var j = 0; j < numCols; ++j) {
-            if(pattern[i] === randomPattern[j] && !hasBeenChecked[j] && i !== j) {
+            if(pattern[i] === randomPattern[j] && !solnChecked[j] && !userChecked[i] && i !== j) {
                 ++correctColor;
+                solnChecked[j] = true;
+                userChecked[i] = true;
             }
         }
     }
@@ -135,6 +184,8 @@ function updateKey(pattern, row) {
 
         }
     }
+
+    ++totalTurns;
 }
 
 // current position on board

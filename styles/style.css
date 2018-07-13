@@ -12,19 +12,16 @@ body {
 }
 
 header {
-  /*border: 2px solid #F00;*/
-  margin: 0 auto;
-
+    /*border: 2px solid #F00;*/
+    margin: 0 auto;
 }
 
-h1 {
+h2, h6 {
     text-align: center;
 }
 
 
-table,
-td,
-Button {
+table, td, Button {
     border: 2px solid black;
     border-collapse: collapse;
 }
