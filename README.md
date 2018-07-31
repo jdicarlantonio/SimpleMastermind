@@ -1,2 +1,4 @@
 # SimpleMasterind
-Simple implementation of Mastermind in Javascript; learning JS because why not!?
+Simple implementation of Mastermind in Javascript. Race against the clock to solve the code.
+
+TODO: Add login system and store high scores of different users.
